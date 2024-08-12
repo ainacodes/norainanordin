@@ -75,7 +75,7 @@ export default function Header() {
                 <a>Pricing</a>
               </li>
               <li>
-                <a>Blog</a>
+                <a href="https://medium.com/@aina.learns22">Blog</a>
               </li>
               <li>
                 <a href="#contact-form">Contact</a>
@@ -114,7 +114,7 @@ export default function Header() {
               <a>Pricing</a>
             </li>
             <li>
-              <a>Blog</a>
+              <a href="https://medium.com/@aina.learns22">Blog</a>
             </li>
             <li>
               <a href="#contact-form">Contact</a>
