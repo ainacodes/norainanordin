@@ -2,7 +2,10 @@ import CalendlyWidget from '../components/CalendlyWidget';
 
 export default function ContactForm() {
   return (
-    <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+    <section
+      id="contact-form"
+      className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 py-8"
+    >
       <div>
         <div className="mr-4">
           <h2 className="text-gray-600 text-3xl font-bold text-center ">

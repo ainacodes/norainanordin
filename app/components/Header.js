@@ -1,6 +1,34 @@
-import Link from 'next/link';
+'use client';
+import { useEffect } from 'react';
 
 export default function Header() {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      const href = e.target.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        scrollToSection(href.substring(1));
+      }
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', handleClick);
+    });
+
+    return () => {
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.removeEventListener('click', handleClick);
+      });
+    };
+  }, []);
+
   return (
     <header className="py-4 navbar">
       <div className="w-full max-w-7xl mx-auto px-0.5 bg-primary rounded-full flex justify-between items-center">
@@ -50,10 +78,12 @@ export default function Header() {
                 <a>Blog</a>
               </li>
               <li>
-                <a>Contact</a>
+                <a href="#contact-form">Contact</a>
               </li>
               <li className="mt-2 sm:hidden">
-                <a className="btn btn-sm">Book a FREE Discovery Call</a>
+                <a href="#contact-form" className="btn btn-sm">
+                  Book a FREE Discovery Call
+                </a>
               </li>
             </ul>
           </div>
@@ -87,12 +117,14 @@ export default function Header() {
               <a>Blog</a>
             </li>
             <li>
-              <a>Contact</a>
+              <a href="#contact-form">Contact</a>
             </li>
           </ul>
         </div>
         <div className="hidden sm:block">
-          <a className="btn">Book a FREE Discovery Call</a>
+          <a href="#contact-form" className="btn">
+            Book a FREE Discovery Call
+          </a>
         </div>
       </div>
     </header>
