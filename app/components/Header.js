@@ -1,36 +1,29 @@
 'use client';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useScrollToSection } from '../hooks/useScrollToSection';
 
 export default function Header() {
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const [isScrolled, setIsScrolled] = useState(false);
+  const scrollToSection = useScrollToSection();
 
   useEffect(() => {
-    const handleClick = (e) => {
-      const href = e.target.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        scrollToSection(href.substring(1));
-      }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
     };
 
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', handleClick);
-    });
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.removeEventListener('click', handleClick);
-      });
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <header className="py-4 navbar">
+    <header
+      className={`navbar sticky top-0 z-50 bg-base-100 transition-all duration-300 ${
+        isScrolled ? 'py-0' : 'py-4'
+      }`}
+    >
       <div className="w-full max-w-7xl mx-auto px-0.5 bg-primary rounded-full flex justify-between items-center">
         <div className="flex items-center">
           <div className="dropdown sm:hidden">
