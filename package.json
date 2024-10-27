@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "next": "14.2.5",
+    "nodemailer": "^6.9.15",
+    "norainanordin": "file:",
     "react": "^18",
     "react-calendly": "^4.3.1",
     "react-dom": "^18",
