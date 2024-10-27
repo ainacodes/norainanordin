@@ -3,11 +3,11 @@ import Image from 'next/image';
 const projects = [
   {
     img: '',
-    title: 'is it safe for my pet?',
-    description: '',
+    title: 'Image to Text Converter',
+    description: 'Convert text image to text.',
     status: 'in progress',
-    techStacks: ['nextjs', 'gemini API'],
-    url: 'https://norainanordin.com',
+    techStacks: ['python-flask', 'JavaScript'],
+    url: 'https://github.com/ainacodes/image-to-text-converter',
   },
   {
     img: '',
